@@ -55,7 +55,7 @@ def cleaned(df):
     df = df.astype(convert_dict_int)
 #get_dummies creates a seperate df of booleans for the identified columns below. Cleaning for the decission tree.
     dummy_df = pd.get_dummies(df[['driver', 'helmet', 'gender']], dummy_na=False, drop_first=[True, True])
-    df = df.drop(columns=['driver', 'helmet', 'gender', 'date', 'time'])
+    df = df.drop(columns=['driver', 'helmet', 'gender', 'date', 'time', 'make', 'color', 'weather', 'dl_state', 'ethnicity'])
     df = pd.concat([df, dummy_df], axis=1)
     df = df.rename(columns = {'driver_passenger':'driver', 'helmet_worn':'helmet', 'gender_male':'male'})
     convert_dict_int = {'driver': int, 'helmet':int, 'male':int}
